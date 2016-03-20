@@ -1,0 +1,95 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'com.android.databinding'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        applicationId "com.mforn.marvel"
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "0.1"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    productFlavors {
+        env_dev {
+            // App Id
+            applicationId "com.mforn.marvel.dev"
+
+            // App Name
+            resValue "string", "app_name", "Marvel (DEV)"
+
+            // Dev libs configuration
+            buildConfigField "Boolean", "INIT_STETHO", "true"
+            buildConfigField "Boolean", "INIT_LEAKCANARY", "false"
+        }
+        env_int {
+            // App Id
+            applicationId "com.mforn.marvel.int"
+
+            // App Name
+            resValue "string", "app_name", "Marvel (INT)"
+        }
+        env_prod {
+            // App Id
+            applicationId "com.mforn.marvel"
+
+            // App Name
+            resValue "string", "app_name", "Marvel"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+    }
+}
+
+dependencies {
+    def libs = rootProject.ext.libraries
+
+    // Modules
+    env_devCompile project(path: ':data', configuration: 'env_devDebug')
+    env_intCompile project(path: ':data', configuration: 'env_intDebug')
+    env_prodCompile project(path: ':data', configuration: 'env_prodDebug')
+    compile project(':domain')
+
+    // Android
+    compile "com.android.support:design:${libs.supportVersion}"
+    compile "com.android.support:appcompat-v7:${libs.supportVersion}"
+
+    // Dagger
+    apt "com.google.dagger:dagger-compiler:${libs.dagger}"
+    compile "com.google.dagger:dagger:${libs.dagger}"
+    compile "org.glassfish:javax.annotation:${libs.javax_annotation}"
+
+    // Reactive X
+    compile "io.reactivex:rxjava:${libs.rxjava}"
+    compile "io.reactivex:rxandroid:${libs.rxandroid}"
+
+    // Glide
+    compile "com.github.bumptech.glide:glide:${libs.glide}"
+
+    // Development / Integration Flavor dependencies
+    env_devCompile "com.facebook.stetho:stetho:${libs.stetho}"
+    env_devCompile "com.squareup.leakcanary:leakcanary-android:${libs.leakCanary}"
+}

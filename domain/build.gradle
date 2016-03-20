@@ -1,0 +1,42 @@
+apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.1"
+
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+dependencies {
+    def libs = rootProject.ext.libraries
+
+    // Dagger
+    provided "com.google.dagger:dagger:${libs.dagger}"
+
+    // Reactive X
+    provided "io.reactivex:rxandroid:${libs.rxandroid}"
+    provided "io.reactivex:rxjava:${libs.rxjava}"
+    compile "com.android.support:support-annotations:${libs.annotations}"
+}
