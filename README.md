@@ -10,7 +10,7 @@ Next I have detailed the 3rd party libraries used in the test project and the pr
   - Pros: Using RxJava on Clean Architecture allows us to communicate all the layer of the apps without having to use a big ammount of interfaces.
   - Cons: To start working with RxJava you need to spend a big amount of time to fully understand how it works and how to use it properly.
 
-* [Retrolambda] (Java 8 lambdas) - This library allows you to use Java8 lambdas in Android projects.
+* [Retrolambda] - This library allows you to use Java8 lambdas in Android projects.
 
   - Pros: When working with nested class as RxJava this library simplifies the code in the way it is more easy to read and understand.
   - Cons: We have to be aware we are using a “patch” that simulates we are using Java8, so we cannot use all the power of Java 8, only the lambdas.
@@ -30,12 +30,12 @@ Next I have detailed the 3rd party libraries used in the test project and the pr
   - Pros: Has better cache behaviour than Picasso and simplify the images loader process.
   - Cons: Not cons found for the moment.
   
-* [Stetho] (Only for developer purpose) - A libray created by facebook that let's you to acces to the application information while it's running. This library allows you to access to SharedPreferences and Database to CRUD elements from it. Also allows you to track all the requests done by the app.
+* [Stetho] - A libray created by facebook that let's you to acces to the application information while it's running. This library allows you to access to SharedPreferences and Database to CRUD elements from it. Also allows you to track all the requests done by the app.
 
   - Pros: Allows you to access to the app internal data.
   - Cons: When activated the app is getting slower and sometimes is hard to debug.
 
-* [Leak Canary] (Only for developer purpose) - This library created by Square allows you to know when some class is leaked by the app and helps you to remove stuck memory.
+* [Leak Canary] - This library created by Square allows you to know when some class is leaked by the app and helps you to remove stuck memory.
 
   - Pros: Allows you to fix the memory leaks.
   - Cons: Sometimes with Stetho running at same time it throwns fake memory leaks.
