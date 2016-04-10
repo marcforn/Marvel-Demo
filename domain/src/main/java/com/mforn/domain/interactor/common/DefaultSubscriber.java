@@ -1,6 +1,5 @@
 package com.mforn.domain.interactor.common;
 
-import android.support.annotation.NonNull;
 
 import rx.Subscriber;
 
@@ -29,7 +28,7 @@ public abstract class DefaultSubscriber<T> extends Subscriber<T> {
         result = t;
     }
 
-    protected abstract void onSuccess(@NonNull T t);
+    protected abstract void onSuccess(T t);
 
     protected abstract void onFailure(Throwable exception);
 }

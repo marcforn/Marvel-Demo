@@ -80,10 +80,13 @@ dependencies {
     compile "com.android.support:design:${libs.supportVersion}"
     compile "com.android.support:appcompat-v7:${libs.supportVersion}"
 
+    // Annotations
+    compile "javax.annotation:jsr250-api:${libs.javax_annotation}"
+    compile "com.android.support:support-annotations:${libs.android_annotations}"
+
     // Dagger
     apt "com.google.dagger:dagger-compiler:${libs.dagger}"
     compile "com.google.dagger:dagger:${libs.dagger}"
-    compile "javax.annotation:jsr250-api:${libs.javax_annotation}"
 
     // Reactive X
     compile "io.reactivex:rxjava:${libs.rxjava}"
