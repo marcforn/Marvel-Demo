@@ -1,15 +1,31 @@
-apply plugin: 'java'
+apply plugin: 'com.android.library'
+apply plugin: 'me.tatarka.retrolambda'
 
-sourceCompatibility = JavaVersion.VERSION_1_8
-targetCompatibility = JavaVersion.VERSION_1_8
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
 
-configurations {
-    provided
-}
+    defaultConfig {
+        minSdkVersion 16
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
 
-sourceSets {
-    main {
-        compileClasspath += configurations.provided
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled false
+            proguardFiles 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 }
 
