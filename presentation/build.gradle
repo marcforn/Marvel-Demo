@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.neenbedankt.android-apt'
-apply plugin: 'com.android.databinding'
 apply plugin: 'me.tatarka.retrolambda'
 
 android {
@@ -54,6 +53,10 @@ android {
         }
     }
 
+    dataBinding{
+        enabled = true
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
@@ -80,7 +83,7 @@ dependencies {
     // Dagger
     apt "com.google.dagger:dagger-compiler:${libs.dagger}"
     compile "com.google.dagger:dagger:${libs.dagger}"
-    compile "org.glassfish:javax.annotation:${libs.javax_annotation}"
+    compile "javax.annotation:jsr250-api:${libs.javax_annotation}"
 
     // Reactive X
     compile "io.reactivex:rxjava:${libs.rxjava}"
