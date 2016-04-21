@@ -103,6 +103,9 @@ public class DetailActivity extends BaseActivity implements DetailActivityInterf
         return (super.onOptionsItemSelected(menuItem));
     }
 
+    /**
+     * Activity interface methods
+     */
     @Override
     public void setToolbarTitle(String title) {
         if (getSupportActionBar() != null) {
@@ -110,9 +113,6 @@ public class DetailActivity extends BaseActivity implements DetailActivityInterf
         }
     }
 
-    /**
-     * Activity interface methods
-     */
     @Override
     public void showSnackBarMessage(boolean isError, String message) {
         Snackbar snackbar = Snackbar.make(findViewById(android.R.id.content), message, Snackbar.LENGTH_LONG);

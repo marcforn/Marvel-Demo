@@ -47,7 +47,7 @@ public class DetailBaseFragment extends Fragment {
         try {
             mListener = (DetailActivityInterface) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException("You must implement OnBoardingInterface");
+            throw new ClassCastException("You must implement DetailActivityInterface on Activity");
         }
     }
 
